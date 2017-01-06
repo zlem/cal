@@ -47,6 +47,17 @@ var (
 	DE_TagderDeutschenEinheit = NewHoliday(time.October, 3)
 	DE_ErsterWeihnachtstag    = ECB_ChristmasDay
 	DE_ZweiterWeihnachtstag   = ECB_ChristmasHoliday
+
+	// Holidays in Sweden
+	SE_NyarDagen             = ECB_NewYearsDay
+	SE_TrettondedagJul       = NewHoliday(time.January, 6)
+	SE_LangFredag            = ECB_GoodFriday
+	SE_AnnanDagPask          = ECB_EasterMonday
+	SE_Valborg               = ECB_LabourDay
+	SE_KristiHimmelsfardsdag = DE_Himmelfahrt
+	SE_SverigesNationaldag   = NewHoliday(time.June, 6)
+	SE_Juldagen              = ECB_ChristmasDay
+	SE_AnnandagJul           = ECB_ChristmasHoliday
 )
 
 // HolidayFn calculates the occurrence of a holiday for the given year.
@@ -163,6 +174,18 @@ func (h *Holiday) matches(date time.Time) bool {
 		return date.YearDay() == h.Offset
 	}
 	return false
+}
+
+func AddSwedenHolidays(c *Calendar) {
+	c.AddHoliday(SE_NyarDagen)
+	c.AddHoliday(SE_TrettondedagJul)
+	c.AddHoliday(SE_LangFredag)
+	c.AddHoliday(SE_AnnanDagPask)
+	c.AddHoliday(SE_Valborg)
+	c.AddHoliday(SE_KristiHimmelsfardsdag)
+	c.AddHoliday(SE_SverigesNationaldag)
+	c.AddHoliday(SE_Juldagen)
+	c.AddHoliday(SE_AnnandagJul)
 }
 
 func AddGermanHolidays(c *Calendar) {
